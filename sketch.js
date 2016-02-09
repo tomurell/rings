@@ -95,8 +95,8 @@ function draw() {
 var Particle = function(position, velocity, hue) {
     var position = position.copy();
     var velocity = velocity.copy();
-    var size = random(4,8);                                   // size
-    var initialLifeSpan = random(128,360);                       // lifespan
+    var size = random(4,8);                             // size
+    var initialLifeSpan = random(128,360);              // lifespan
     var lifeSpan = initialLifeSpan;
     var hue = random(hue-10, hue+10);
     var acc = createVector(0, .001);
@@ -113,7 +113,7 @@ var Particle = function(position, velocity, hue) {
             var distanceSq = att.magSq();
             if(distanceSq > 1){
                 att.div(distanceSq);
-                att.mult(32*A.getStrength());                  // attractor strength
+                att.mult(32*A.getStrength());           // attractor strength
                 acc.add(att);
             }
 
@@ -125,7 +125,7 @@ var Particle = function(position, velocity, hue) {
         
         var transparency = map(lifeSpan, 0, initialLifeSpan, 200, 240);
         
-        fill(transparency, 100, 95, 100);                      // color
+        fill(transparency, 100, 95, 100);               // color
         noStroke();
         ellipse(position.x,
                 position.y,
@@ -158,11 +158,11 @@ function createMightyParticles(initialPos){
     }
 
     
-    for(var i=0; i<random(80,120); i++){                         // # particles
+    for(var i=0; i<random(60,80); i++){                // # particles
         var vel3 = createVector(0,1);
-                    vel3.rotate(random(0, TWO_PI));            //remove "rotate" to make bars
-                    vel3.mult(random(2,3));                    //escape velocity
-                                 //remove "random" to make rings
+                    vel3.rotate(random(0, TWO_PI));     //remove "rotate" to make bars
+                    vel3.mult(random(2,3));             //escape velocity
+                                                        //remove "random" to make rings
         var newBorn = new Particle(pos, vel3, hue);
     
         particleSystem.push(newBorn);
@@ -184,7 +184,7 @@ var Attractor = function(pos, s){
       var strength = s;
         this.draw = function(){ 
             noStroke();
-            fill(202, 100, 100);                                   // attractor color
+            fill(202, 100, 100);                        // attractor color
             ellipse(pos.x, pos.y, strength, strength);
         }
         
